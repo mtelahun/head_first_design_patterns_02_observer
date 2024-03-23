@@ -1,19 +1,29 @@
 package test;
 
+import static org.junit.Assert.assertEquals;
+
+import java.util.ArrayList;
+
 import org.junit.Test;
+
+import main.WeatherData;
+import main.WeatherObserver;
+import test.util.TestObserver;
 
 public class WeatherObserverTest {
     @Test
-    void givenWeatherDataWhenRegisterObserverThenObserverInObserverList() {
+    public void givenWeatherDataWhenRegisterObserverThenObserverInObserverList() {
         // Arrange
-        Observer o = new TestObserver();
+        WeatherObserver o = new TestObserver();
         WeatherData wd = new WeatherData();
 
         // Act
         wd.registerObserver(0);
 
         // Assert
-        ArrayList<Observer> olist = wd.observerList();
+        ArrayList<WeatherObserver> olist = wd.observerList();
+        assertEquals(1, olist.size());
+        assertEquals(o, olist.get(0));
     }
     
 }
