@@ -18,7 +18,7 @@ public class WeatherObserverTest {
         WeatherData wd = new WeatherData();
 
         // Act
-        wd.registerObserver(0);
+        wd.registerObserver(o);
 
         // Assert
         ArrayList<WeatherObserver> olist = wd.observerList();

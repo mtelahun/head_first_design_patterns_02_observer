@@ -4,14 +4,18 @@ import java.util.ArrayList;
 
 public class WeatherData implements WeatherSubject {
 
-    public ArrayList<WeatherObserver> observerList() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'observerList'");
+    ArrayList<WeatherObserver> observers;
+
+    public WeatherData() {
+        observers = new ArrayList<WeatherObserver>();
     }
 
-    public void registerObserver(int i) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'registerObserver'");
+    public ArrayList<WeatherObserver> observerList() {
+        return observers;
+    }
+
+    public void registerObserver(WeatherObserver observer) {
+        observers.add(observer);
     }
     
 }
