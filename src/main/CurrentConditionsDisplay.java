@@ -12,7 +12,7 @@ public class CurrentConditionsDisplay implements DisplayElement, WeatherObserver
     }
 
     @Override
-    public void display() {
+    public String display() {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'display'");
     }

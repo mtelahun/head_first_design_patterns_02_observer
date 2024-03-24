@@ -10,6 +10,7 @@ import main.CurrentConditionsDisplay;
 import main.DisplayElement;
 import main.WeatherData;
 import main.WeatherObserver;
+import test.util.TestObserver;
 
 public class CurrentConditionsDisplayTest {
     @Test
@@ -27,5 +28,17 @@ public class CurrentConditionsDisplayTest {
 
     }
 
-    
+    @Test
+    public void givenRegisteredDisplay_WhenWeatherDataUpdated_ThenDisplayUpdated() {
+        // Arrange
+        WeatherData wd = new WeatherData();
+        CurrentConditionsDisplay display = new CurrentConditionsDisplay(wd);
+
+        // Act
+        wd.setMeasurements(25.0f, 45.2f, 30.0f);
+
+        // Assert
+        String result = display.display(); 
+        assertEquals("Current conditions: 25.0F degrees, 45.2% humidity and 30.0PSI pressure", result);
+    }    
 }
