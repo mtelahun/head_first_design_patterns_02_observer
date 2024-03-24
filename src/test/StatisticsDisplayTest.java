@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import org.junit.Test;
 
 import main.DisplayElement;
+import main.StatisticsDisplay;
 import main.WeatherData;
 import main.WeatherObserver;
 
