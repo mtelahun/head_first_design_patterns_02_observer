@@ -6,6 +6,8 @@ import java.util.ArrayList;
 
 import org.junit.Test;
 
+import main.CurrentConditionsDisplay;
+import main.DisplayElement;
 import main.WeatherData;
 import main.WeatherObserver;
 
@@ -16,7 +18,7 @@ public class DisplayElementTest {
         WeatherData wd = new WeatherData();
 
         // Act
-        DisplayElement display = new DisplayElement(wd);
+        DisplayElement display = new CurrentConditionsDisplay(wd);
 
         // Assert
         ArrayList<WeatherObserver> olist = wd.observerList();
