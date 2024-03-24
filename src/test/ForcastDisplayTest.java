@@ -39,6 +39,6 @@ public class ForcastDisplayTest {
 
         // Assert
         String result = display.display(); 
-        assertEquals("Improving weather on the way!", result);
+        assertEquals("Forcast: Improving weather on the way!", result);
     }    
 }
