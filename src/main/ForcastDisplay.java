@@ -29,9 +29,10 @@ public class ForcastDisplay implements DisplayElement, WeatherObserver {
             return String.format(
                     "%s: Watch out for cooler, rainy weather",
                     heading);
-
         } else {
-            return "Forcast:";
+            return String.format(
+                    "%s: More of the same",
+                    heading);
         }
     }
     
