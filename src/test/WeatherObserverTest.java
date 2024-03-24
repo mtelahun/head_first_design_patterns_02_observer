@@ -1,6 +1,7 @@
 package test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
 
@@ -26,4 +27,18 @@ public class WeatherObserverTest {
         assertEquals(o, olist.get(0));
     }
     
+    @Test
+    public void givenWeatherDataWithRegisteredObserverWhenObserverRemovedThenObserverNotInObserverList() {
+        // Arrange
+        WeatherObserver o = new TestObserver();
+        WeatherData wd = new WeatherData();
+        wd.registerObserver(o);
+
+        // Act
+        wd.removeObserver(o);
+
+        // Assert
+        ArrayList<WeatherObserver> olist = wd.observerList();
+        assertTrue(olist.isEmpty());
+    }
 }
