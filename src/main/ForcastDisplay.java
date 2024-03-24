@@ -25,6 +25,11 @@ public class ForcastDisplay implements DisplayElement, WeatherObserver {
                 "%s: Improving weather on the way!",
                 heading
             );
+        } else if (currentPressure < previousPressure) {
+            return String.format(
+                    "%s: Watch out for cooler, rainy weather",
+                    heading);
+
         } else {
             return "Forcast:";
         }
