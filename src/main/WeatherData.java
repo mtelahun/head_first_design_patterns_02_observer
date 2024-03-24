@@ -18,9 +18,8 @@ public class WeatherData implements WeatherSubject {
         observers.add(observer);
     }
 
-    public void removeObserver(WeatherObserver o) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'removeObserver'");
+    public void removeObserver(WeatherObserver observer) {
+        observers.remove(observer);
     }
     
 }
