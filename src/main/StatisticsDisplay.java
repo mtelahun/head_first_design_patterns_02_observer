@@ -19,7 +19,8 @@ public class StatisticsDisplay implements DisplayElement, WeatherObserver {
         float temperature = weatherData.getTemperature();
         if (temperature > maxTemperature) {
             maxTemperature = temperature;
-        } else if (temperature < minTemperature) {
+        }
+        if (temperature < minTemperature) {
             minTemperature = temperature;
         }
         sumTemperatures += temperature;
