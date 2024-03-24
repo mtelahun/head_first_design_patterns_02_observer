@@ -42,4 +42,18 @@ public class StatisticsDisplayTest {
         String result = display.display(); 
         assertEquals("Avg/Max/Min temperature = 66.2/82.0/55.5", result);
     }    
+
+    @Test
+    public void givenRegisteredDisplay_WhenNewMeasurement_ThenSetBothMinAndMax() {
+        // Arrange
+        WeatherData wd = new WeatherData();
+        StatisticsDisplay display = new StatisticsDisplay(wd);
+
+        // Act
+        wd.setMeasurements(55.5f, 70f, 29.2f);
+
+        // Assert
+        String result = display.display();
+        assertEquals("Avg/Max/Min temperature = 55.5/55.5/55.5", result);
+    }
 }
