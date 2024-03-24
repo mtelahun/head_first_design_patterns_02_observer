@@ -26,4 +26,19 @@ public class ForcastDisplayTest {
         assertEquals((WeatherObserver)display, olist.get(0));
 
     }
+
+    @Test
+    public void givenRegisteredDisplayWithWeatherMeasurements_WhenNewPressureGreaterThanPrevious_ThenDisplayWeatherIsImproving() {
+        // Arrange
+        WeatherData wd = new WeatherData();
+        ForcastDisplay display = new ForcastDisplay(wd);
+        wd.setMeasurements(82.0f, 70f, 29.2f);
+
+        // Act
+        wd.setMeasurements(82.0f, 70f, 31.2f);
+
+        // Assert
+        String result = display.display(); 
+        assertEquals("Improving weather on the way!", result);
+    }    
 }
