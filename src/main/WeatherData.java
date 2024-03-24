@@ -5,16 +5,31 @@ import java.util.ArrayList;
 public class WeatherData implements WeatherSubject {
 
     private float temperature;
+    
+    public float getTemperature() {
+        return temperature;
+    }
+
     private float humidity;
+
+    public float getHumidity() {
+        return humidity;
+    }
+
     private float pressure;
+
+    public float getPressure() {
+        return pressure;
+    }
+
     private ArrayList<WeatherObserver> observers;
+
+    public ArrayList<WeatherObserver> getObservers() {
+        return observers;
+    }
 
     public WeatherData() {
         observers = new ArrayList<WeatherObserver>();
-    }
-
-    public ArrayList<WeatherObserver> observerList() {
-        return observers;
     }
 
     public void setMeasurements(float newTemperature, float newHumidity, float newPressure) {
@@ -38,7 +53,7 @@ public class WeatherData implements WeatherSubject {
     @Override
     public void notifyObservers() {
         observers.forEach(observer -> {
-            observer.update(temperature, humidity, pressure);
+            observer.update();
         });
     }
     

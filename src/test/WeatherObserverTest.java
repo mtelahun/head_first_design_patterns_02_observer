@@ -15,14 +15,13 @@ public class WeatherObserverTest {
     @Test
     public void givenWeatherDataWhenRegisterObserverThenObserverInObserverList() {
         // Arrange
-        WeatherObserver o = new TestObserver();
         WeatherData wd = new WeatherData();
 
         // Act
-        wd.registerObserver(o);
+        WeatherObserver o = new TestObserver(wd);
 
         // Assert
-        ArrayList<WeatherObserver> olist = wd.observerList();
+        ArrayList<WeatherObserver> olist = wd.getObservers();
         assertEquals(1, olist.size());
         assertEquals(o, olist.get(0));
     }
@@ -30,24 +29,22 @@ public class WeatherObserverTest {
     @Test
     public void givenWeatherDataWithRegisteredObserverWhenObserverRemovedThenObserverNotInObserverList() {
         // Arrange
-        WeatherObserver o = new TestObserver();
         WeatherData wd = new WeatherData();
-        wd.registerObserver(o);
+        WeatherObserver o = new TestObserver(wd);
 
         // Act
         wd.removeObserver(o);
 
         // Assert
-        ArrayList<WeatherObserver> olist = wd.observerList();
+        ArrayList<WeatherObserver> olist = wd.getObservers();
         assertTrue(olist.isEmpty());
     }
 
     @Test
     public void givenWeatherDataWithRegisteredObserver_WhenSetMeasurements_ThenObserversNotified() {
         // Arrange
-        WeatherObserver o = new TestObserver();
         WeatherData wd = new WeatherData();
-        wd.registerObserver(o);
+        WeatherObserver o = new TestObserver(wd);
 
         // Act
         wd.setMeasurements(25.0f, 45.2f, 30.0f);

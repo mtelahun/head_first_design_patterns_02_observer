@@ -21,7 +21,7 @@ public class CurrentConditionsDisplayTest {
         DisplayElement display = new CurrentConditionsDisplay(wd);
 
         // Assert
-        ArrayList<WeatherObserver> olist = wd.observerList();
+        ArrayList<WeatherObserver> olist = wd.getObservers();
         assertEquals(1, olist.size());
         assertEquals((WeatherObserver)display, olist.get(0));
 

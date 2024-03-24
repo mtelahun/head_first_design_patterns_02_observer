@@ -1,27 +1,36 @@
 package test.util;
 
+import main.WeatherData;
 import main.WeatherObserver;
 
 public class TestObserver implements WeatherObserver {
-    float temperature;
-    float humidity;
-    float pressure;
 
+    private WeatherData weatherData;
+
+    private float temperature;
     public float getTemperature() {
         return temperature;
     }
 
+    private float humidity;
     public float getHumidity() {
         return humidity;
     }
 
+    private float pressure;
     public float getPressure() {
         return pressure;
     }
 
-    public void update(float newTemperature, float newHumidity, float newPressure) {
-        temperature = newTemperature;
-        humidity = newHumidity;
-        pressure = newPressure;
+    public TestObserver(WeatherData weatherData) {
+        weatherData.registerObserver((WeatherObserver)this);
+        this.weatherData = weatherData;
+    }
+
+    @Override
+    public void update() {
+        temperature = weatherData.getTemperature();
+        humidity = weatherData.getHumidity();
+        pressure = weatherData.getPressure();
     }
 }

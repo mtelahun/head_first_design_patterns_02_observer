@@ -1,19 +1,21 @@
 package main;
 
 public class CurrentConditionsDisplay implements DisplayElement, WeatherObserver {
+    private WeatherData weatherData;
     private float temperature;
     private float humidity;
     private float pressure;
 
     public CurrentConditionsDisplay(WeatherData wd) {
         wd.registerObserver((WeatherObserver)this);
+        weatherData = wd;
     }
 
     @Override
-    public void update(float newTemperature, float newHumidity, float newPressure) {
-        temperature = newTemperature;
-        humidity = newHumidity;
-        pressure = newPressure;
+    public void update() {
+        temperature = weatherData.getTemperature();
+        humidity = weatherData.getHumidity();
+        pressure = weatherData.getPressure();
     }
 
     @Override
