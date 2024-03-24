@@ -41,4 +41,21 @@ public class WeatherObserverTest {
         ArrayList<WeatherObserver> olist = wd.observerList();
         assertTrue(olist.isEmpty());
     }
+
+    @Test
+    public void givenWeatherDataWithRegisteredObserver_WhenSetMeasurements_ThenObserversNotified() {
+        // Arrange
+        WeatherObserver o = new TestObserver();
+        WeatherData wd = new WeatherData();
+        wd.registerObserver(o);
+
+        // Act
+        wd.setMeasurements(25.0, 45.2, 30.0);
+
+        // Assert
+        TestObserver testObserver = (TestObserver)o; 
+        assertEquals(25.0, testObserver.getTemperature(), 0.01);
+        assertEquals(45.2, testObserver.getHumidity(), 0.01);
+        assertEquals(30.0, testObserver.getPressure(), 0.01);
+    }
 }
