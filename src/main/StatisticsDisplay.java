@@ -3,22 +3,35 @@ package main;
 public class StatisticsDisplay implements DisplayElement, WeatherObserver {
 
     private WeatherData weatherData;
+    private int numReadings;
+    private float sumTemperatures;
+    private float minTemperature;
+    private float maxTemperature;
 
     public StatisticsDisplay(WeatherData wd) {
         wd.registerObserver((WeatherObserver)this);
         weatherData = wd;
+        minTemperature = 1000000f;
     }
 
     @Override
     public void update() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'update'");
+        float temperature = weatherData.getTemperature();
+        if (temperature > maxTemperature) {
+            maxTemperature = temperature;
+        } else if (temperature < minTemperature) {
+            minTemperature = temperature;
+        }
+        sumTemperatures += temperature;
+        numReadings++;
     }
 
     @Override
     public String display() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'display'");
+        return String.format(
+            "Avg/Max/Min temperature = %.1f/%.1f/%.1f", 
+            sumTemperatures / (float)numReadings, maxTemperature, minTemperature
+        );
     }
     
 }
