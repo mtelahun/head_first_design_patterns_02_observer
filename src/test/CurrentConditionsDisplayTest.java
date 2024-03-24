@@ -11,7 +11,7 @@ import main.DisplayElement;
 import main.WeatherData;
 import main.WeatherObserver;
 
-public class DisplayElementTest {
+public class CurrentConditionsDisplayTest {
     @Test
     public void givenDisplayElement_WhenConstructorGivenWeatherData_ThenRegistersItselfAsObserver() {
         // Arrange
