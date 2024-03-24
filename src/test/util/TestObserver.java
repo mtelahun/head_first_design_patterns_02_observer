@@ -19,5 +19,9 @@ public class TestObserver implements WeatherObserver {
         return pressure;
     }
 
-    public void update(float temp, float humidity, float pressure) {}
+    public void update(float newTemperature, float newHumidity, float newPressure) {
+        temperature = newTemperature;
+        humidity = newHumidity;
+        pressure = newPressure;
+    }
 }

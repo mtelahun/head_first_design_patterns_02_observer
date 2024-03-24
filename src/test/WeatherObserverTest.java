@@ -50,7 +50,7 @@ public class WeatherObserverTest {
         wd.registerObserver(o);
 
         // Act
-        wd.setMeasurements(25.0, 45.2, 30.0);
+        wd.setMeasurements(25.0f, 45.2f, 30.0f);
 
         // Assert
         TestObserver testObserver = (TestObserver)o; 
